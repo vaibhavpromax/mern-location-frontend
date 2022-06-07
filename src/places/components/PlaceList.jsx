@@ -1,14 +1,16 @@
 import React from "react";
+import Button from "../../shared/components/FormElements/Button";
 import Card from "../../shared/components/UIElements/Card";
 import { PlaceItem } from "./PlaceItem";
 import "./PlaceList.css";
+
 export const PlaceList = (props) => {
   if (props.items.length === 0) {
     return (
       <div className="place-list center">
         <Card>
           <h2>No place found . maybe create one</h2>
-          <button>Share place</button>
+          <Button to="/places/new">Share place</Button>
         </Card>
       </div>
     );
@@ -17,6 +19,7 @@ export const PlaceList = (props) => {
     <ul className="place-list">
       {props.items.map((place) => (
         <PlaceItem
+          id={place.id}
           creatorId={place.creator}
           coordinates={place.location}
           key={place.id}
